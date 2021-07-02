@@ -1,68 +1,51 @@
 {
   "cities": [
     {
-      "id": 2,
-      "name": "Madrid",
-      "active": false
-    },
-    {
-      "id": 3,
-      "name": "Miami",
+      "id": 1,
+      "name": "Valencia 🇪🇸",
       "active": true
     },
     {
-      "name": "dasd",
+      "id": 2,
+      "name": "Madrid 🇪🇸",
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Miami 🇺🇸",
+      "active": true
+    },
+    {
+      "name": "Barcelona 🇪🇸",
       "id": 4,
-      "active": false
+      "active": true
+    },
+    {
+      "name": "Berlin 🇩🇪",
+      "id": 5,
+      "active": true
     }
   ],
-  "courses": [
+  "restaurants": [
     {
       "id": 1,
-      "name": "WebDev",
-      "type": "Full Time"
+      "name": "Spanish",
+      "type": "Paella 🥘"
     },
     {
       "id": 2,
-      "name": "WebDev",
-      "type": "Part Time"
+      "name": "Italian",
+      "type": "Pasta 🍝"
     },
     {
       "id": 3,
-      "name": "UX/UI",
-      "type": "Full Time"
+      "name": "Mexican",
+      "type": "Tex-Mex 🇲🇽"
     },
     {
       "id": 4,
-      "name": "UX/UI",
-      "type": "Part Time"
-    }
-  ],
-  "bootcamps": [
-    {
-      "id": 2,
-      "cityId": 2,
-      "courseId": 2
-    },
-    {
-      "id": 3,
-      "cityId": 3,
-      "courseId": 1
-    },
-    {
-      "id": 4,
-      "cityId": 4,
-      "courseId": 2
-    },
-    {
-      "id": 5,
-      "cityId": 2,
-      "courseId": 3
-    },
-    {
-      "id": 6,
-      "cityId": 3,
-      "courseId": 4
+      "name": "American",
+      "type": "Burger 🍔"
     }
   ]
 }

@@ -1,76 +1,99 @@
-const axios = require('axios');
+const axios = require("axios");
 
 const http = axios.create({
-  baseURL: 'http://localhost:8000'
+  baseURL: "http://localhost:8000",
 });
 
 module.exports.home = (req, res, next) => {
-  res.render('home')
-}
+  res.render("home");
+};
 
 module.exports.cities = (req, res, next) => {
-  http.get('/cities')
+  http
+    .get("/cities")
     .then((response) => {
-      console.log(response.data)
+      console.log(response.data);
 
-      res.render('cities', { cities: response.data })
+      res.render("cities", { cities: response.data });
     })
-    .catch(error => next(error))
-}
+    .catch((error) => next(error));
+};
 
 module.exports.createCity = (req, res, next) => {
-  res.render('new-city')
-}
+  res.render("new-city");
+};
 
 module.exports.doCreateCity = (req, res, next) => {
   // req.body
   if (!req.body.name || req.body.name.length < 2) {
-    res.render('new-city', {
+    res.render("new-city", {
       city: { name: req.body.name },
-      error: "Introduce a valid name"
-    })
+      error: "Introduce a valid name",
+    });
   } else {
-    http.post('/cities', {
-      name: req.body.name
-    })
-      .then(() => {
-        res.redirect('/cities')
+    http
+      .post("/cities", {
+        name: req.body.name,
       })
-      .catch(error => next(error))
+      .then(() => {
+        res.redirect("/cities");
+      })
+      .catch((error) => next(error));
   }
-
-}
+};
 
 module.exports.getCity = (req, res, next) => {
   const id = req.params.id;
 
-  http.get(`/cities/${id}`)
+  http
+    .get(`/cities/${id}`)
     .then((response) => {
-      console.log(response.data)
+      console.log(response.data);
 
-      res.render('detail', { item: response.data })
+      res.render("detail", { item: response.data });
     })
-    .catch((error) => next(error))
-}
+    .catch((error) => next(error));
+};
 
-module.exports.courses = (req, res, next) => {
-  http.get('/courses')
+module.exports.restaurants = (req, res, next) => {
+  http
+    .get("/restaurants")
     .then((response) => {
-      console.log(response.data)
+      console.log(response.data);
 
-      res.render('courses', { courses: response.data })
+      res.render("restaurants", { restaurants: response.data });
     })
-    .catch(error => next(error))
-}
+    .catch((error) => next(error));
+};
 
-module.exports.getCourse = (req, res, next) => {
+module.exports.getRestaurant = (req, res, next) => {
   const id = req.params.id;
 
-  http.get(`/courses/${id}`)
+  http
+    .get(`/restaurants/${id}`)
     .then((response) => {
-      console.log(response.data)
+      console.log(response.data);
 
-      res.render('detail', { item: response.data })
+      res.render("detail", { item: response.data });
     })
-    .catch((error) => next(error))
-}
+    .catch((error) => next(error));
+};
+
+module.exports.editRestaurant = (req, res, next) => {
+  const { id } = req.params;
+
+  Restaurant.findById(id)
+    .then((restaurantToEdit) => {
+      res.render("restaurant-edit", { restaurant: restaurantToEdit });
+    })
+    .catch((error) => next(error));
+};
+
+module.exports.doEditRestaurant = (req, res, next) => {
+  const { id } = req.params;
+  const { name } = req.body;
+ 
+  Restaurant.findByIdAndUpdate(id, { name }, { new: true })
+    .then(updatedRestaurant => res.redirect(`/restaurants/${updatedRestaurant.id}`))
+    .catch(error => next(error));
+};

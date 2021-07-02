@@ -11,7 +11,9 @@ router.get('/cities/new', miscController.createCity);
 router.get('/cities/:id', miscController.getCity);
 
 // Courses
-router.get('/courses', miscController.courses);
-router.get('/courses/:id', miscController.getCourse);
+router.get('/restaurants', miscController.restaurants);
+router.get('/restaurants/:id', miscController.getRestaurant);
+router.get('/restaurants/:id/edit', miscController.editRestaurant);
+router.post('/restaurants/:id/edit', miscController.doEditRestaurant)
 
 module.exports = router;

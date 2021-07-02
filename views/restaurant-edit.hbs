@@ -1,0 +1,8 @@
+<h1>Edit a Restaurant</h1>
+
+<form action="/restaurants/{{restaurant.id}}/edit" method="POST">
+  <div class="mb-3">
+    <label for="name" class="form-label">Edit your favourite food</label>
+    <input type="text" value="{{restaurant.name}}" class="form-control" id="name" name="name">
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

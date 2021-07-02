@@ -1,0 +1,16 @@
+<h1>Restaurants 🍲</h1>
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  {{#each restaurants as |restaurant|}}
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{restaurant.name}}</h5>
+        <p class="card-text">{{restaurant.type}}</p>
+        <a class="btn btn-primary" href="/restaurants/{{restaurant.id}}" role="button">See more</a>
+        <a class="btn btn-primary" href="/restaurants/{{restaurant.id}}/edit" role="button">Edit</a>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>

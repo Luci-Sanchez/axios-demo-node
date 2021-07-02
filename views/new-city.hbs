@@ -2,7 +2,7 @@
 
 <form action="/cities" method="POST">
   <div class="mb-3">
-    <label for="name" class="form-label">Name of the city</label>
+    <label for="name" class="form-label">Where would you like to have us?</label>
     <input type="text" value="{{city.name}}" class="form-control {{#if error}}is-invalid{{/if}}" id="name" name="name">
     {{#if error}}
       <div class="invalid-feedback">
