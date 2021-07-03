@@ -82,18 +82,17 @@ module.exports.getRestaurant = (req, res, next) => {
 module.exports.editRestaurant = (req, res, next) => {
   const { id } = req.params;
 
-  Restaurant.findById(id)
-    .then((restaurantToEdit) => {
-      res.render("restaurant-edit", { restaurant: restaurantToEdit });
+  http.get(`/restaurants/${id}`)
+    .then((response) => {
+      res.render("restaurant-edit", { restaurant: response.data });
     })
     .catch((error) => next(error));
 };
 
 module.exports.doEditRestaurant = (req, res, next) => {
   const { id } = req.params;
-  const { name } = req.body;
  
-  Restaurant.findByIdAndUpdate(id, { name }, { new: true })
-    .then(updatedRestaurant => res.redirect(`/restaurants/${updatedRestaurant.id}`))
+  http.patch(`/restaurants/${id}`, {name: req.body.name})
+    .then(updatedRestaurant => res.redirect(`/restaurants`))
     .catch(error => next(error));
 };
